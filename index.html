@@ -181,7 +181,7 @@ nav.glass,.screen.glass,.btn.glassy,.arrows button,.chip.lq{background:rgba(255,
 <header class="hero wrap" id="top">
   <h1 class="sr">Kyle Moran, Generative AI Editor</h1>
   <div class="screen glass" id="screen">
-    <video id="intro" src="hero/intro.mp4" poster="hero/intro_first.jpg" muted playsinline autoplay preload="auto" aria-label="Montage of Kyle Moran's work ending on his name"></video>
+    <video id="intro" src="hero/intro.mp4?v=1795536813" poster="hero/intro_first.jpg?v=1795536813" muted playsinline autoplay preload="auto" aria-label="Montage of Kyle Moran's work ending on his name"></video>
     <button class="btn glassy replay" id="replay">↺ Replay intro</button>
   </div>
   <div class="herotext glass">
@@ -256,7 +256,7 @@ const iv=$('#intro'),scr=$('#screen');
 iv.addEventListener('ended',()=>scr.classList.add('ended'));
 $('#replay').onclick=()=>{scr.classList.remove('ended');iv.currentTime=0;iv.play()};
 let started=false;
-const holdTitle=()=>{iv.poster='hero/intro_poster.jpg';scr.classList.add('ended');if(!started)$('#replay').textContent='▶ Play intro'};
+const holdTitle=()=>{iv.poster='hero/intro_poster.jpg?v=1795536813';scr.classList.add('ended');if(!started)$('#replay').textContent='▶ Play intro'};
 iv.addEventListener('play',()=>{started=true;$('#replay').textContent='↺ Replay intro'});
 // background tabs pause video to save power: wait until the page is visible instead of skipping the intro
 function tryPlay(){iv.play().then(()=>{started=true}).catch(()=>{if(!document.hidden)holdTitle()})}
