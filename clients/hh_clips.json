@@ -1,0 +1,38 @@
+{
+ "coldopen": {
+  "title": "Cold Open + Title",
+  "label": "Christmas chaos, then the title"
+ },
+ "fishing": {
+  "title": "The Fishing Prank",
+  "label": "Dibs vs. a snoring Grampy"
+ },
+ "unicorn": {
+  "title": "Unicorn Runway",
+  "label": "Daydream sequence"
+ },
+ "robot": {
+  "title": "Desert Robot",
+  "label": "Daydream sequence"
+ },
+ "cownight": {
+  "title": "Bert and the Cow",
+  "label": "Night on the farm"
+ },
+ "bees": {
+  "title": "The Bee Swarm",
+  "label": "Ends in the Christmas lights"
+ },
+ "santacow": {
+  "title": "Santa Rides the Cow",
+  "label": "Night chase"
+ },
+ "christmaseve": {
+  "title": "Christmas Eve",
+  "label": "Snowy arrival and dinner"
+ },
+ "finale": {
+  "title": "The Finale",
+  "label": "The cow's last word"
+ }
+}
