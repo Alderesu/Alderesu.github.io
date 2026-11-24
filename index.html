@@ -234,6 +234,18 @@ nav .btn.dark:hover{background:rgba(255,255,255,.9);color:var(--ink);box-shadow:
  backdrop-filter:url(#lg) blur(3px) saturate(200%) brightness(1.06);
  box-shadow:inset 0 1px 1.5px #fff,inset 0 -1px 1px rgba(255,255,255,.55),inset 0 0 10px rgba(255,255,255,.55),0 0 0 .5px rgba(0,0,0,.07),0 3px 12px rgba(30,40,90,.18)!important}
 .links a.on{color:var(--ink)}
+
+/* nav v3 (2026-11-25): one blue liquid-glass pill in the logo blue; Contact is a normal link */
+nav{padding:6px 6px 6px 18px}
+.links a.pilled{color:#fff!important}
+.links a{transition:color .2s ease}
+.navpill{background:rgba(10,132,255,.82)!important;
+ -webkit-backdrop-filter:blur(6px) saturate(180%);backdrop-filter:blur(6px) saturate(180%);
+ backdrop-filter:url(#lg) blur(4px) saturate(180%)!important;
+ box-shadow:inset 0 1px 1.5px rgba(255,255,255,.8),inset 0 -1.5px 2px rgba(0,40,140,.35),inset 0 0 14px rgba(255,255,255,.22),0 4px 16px rgba(10,110,255,.38)!important}
+.navpill::after{content:"";position:absolute;left:12%;right:12%;top:2px;height:45%;border-radius:999px;
+ background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,0));pointer-events:none}
+@media (max-width:980px){.links{display:flex!important}.links a:not(.navcta){display:none}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
  <filter id="lg" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
@@ -243,8 +255,7 @@ nav .btn.dark:hover{background:rgba(255,255,255,.9);color:var(--ink);box-shadow:
  </filter></svg>
 <div class="aura" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <nav class="glass"><a class="logo" href="#top">K<span>M</span></a>
-  <div class="links"><a href="#humble-house">Humble House</a><a href="#mixxi">Mixxi</a><a href="#channels">Channels</a><a href="#other">Other work</a><a href="#toolkit">Toolkit</a></div>
-  <a class="btn dark" href="#contact">Contact</a></nav>
+  <div class="links"><a href="#humble-house">Humble House</a><a href="#mixxi">Mixxi</a><a href="#channels">Channels</a><a href="#other">Other work</a><a href="#toolkit">Toolkit</a><a class="navcta" href="#contact">Contact</a></div></nav>
 
 <header class="hero wrap" id="top">
  <div class="herogrid">
@@ -360,7 +371,7 @@ playItem(0);
 (()=>{const box=document.querySelector('.links'); if(!box) return;
  const links=[...box.querySelectorAll('a')], pill=document.createElement('span'); pill.className='navpill'; box.prepend(pill);
  let active=null, hovering=false;
- const moveTo=a=>{ if(!a){pill.style.opacity=0;return} pill.style.opacity=1; pill.style.width=a.offsetWidth+'px'; pill.style.transform=`translateX(${a.offsetLeft}px)` };
+ const moveTo=a=>{ links.forEach(l=>l.classList.toggle('pilled',l===a)); if(!a){pill.style.opacity=0;return} pill.style.opacity=1; pill.style.width=a.offsetWidth+'px'; pill.style.transform=`translateX(${a.offsetLeft}px)` };
  links.forEach(a=>{a.addEventListener('mouseenter',()=>{hovering=true;moveTo(a)})});
  box.addEventListener('mouseleave',()=>{hovering=false;moveTo(active)});
  const byId=Object.fromEntries(links.map(a=>[a.getAttribute('href').slice(1),a]));
