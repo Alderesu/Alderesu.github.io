@@ -117,7 +117,62 @@ footer{padding-top:30px;padding-bottom:50px;color:var(--faint);font-size:13px;te
 @media (max-width:640px){.wrap{padding-left:16px;padding-right:16px}.case,.specrow{padding:22px 18px}.herotext{padding:22px}
  .card[data-a="16:9"]{width:290px}.card[data-a="9:16"]{width:165px}.lbstage{padding:0 8px}.nav{display:none}.screen{padding:6px;border-radius:24px}.screen video,.screen img{border-radius:19px}
  .replay{right:16px;bottom:16px}}
+
+/* ================= Liquid Glass (iOS-style), Kyle 2026-11-25 =================
+   wallpaper behind everything + frosted panels with lit rims + refracting glass controls.
+   Refraction uses an SVG displacement filter in backdrop-filter (Chromium); other browsers keep the frosted fallback. */
+:root{--acc:#0a84ff;--acc-d:#0060df}
+body{background:#eef1f8}
+.aura{display:block;position:fixed;inset:-10vmax;z-index:-1;pointer-events:none;overflow:hidden;background:#eef1f8}
+.aura i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.9;animation:drift 26s ease-in-out infinite alternate}
+.aura i:nth-child(1){width:52vmax;height:52vmax;left:-6vmax;top:-10vmax;background:#8fb4ff}
+.aura i:nth-child(2){width:46vmax;height:46vmax;right:-8vmax;top:4vmax;background:#c3a6ff;animation-duration:31s}
+.aura i:nth-child(3){width:44vmax;height:44vmax;right:12vmax;bottom:-14vmax;background:#ffb3dd;animation-duration:29s}
+.aura i:nth-child(4){width:40vmax;height:40vmax;left:4vmax;bottom:-12vmax;background:#8de3d6;animation-duration:35s}
+@keyframes drift{to{transform:translate(6vmax,4vmax) scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.aura i{animation:none}}
+/* frosted panels: clear tint, top sheen, lit rim */
+.glass{border:0;background:radial-gradient(120% 80% at 18% -12%,rgba(255,255,255,.55),rgba(255,255,255,0) 52%),rgba(255,255,255,.30);
+ -webkit-backdrop-filter:blur(22px) saturate(185%) brightness(1.04);backdrop-filter:blur(22px) saturate(185%) brightness(1.04);
+ box-shadow:0 18px 50px rgba(40,50,110,.16),0 2px 6px rgba(40,50,110,.08),inset 0 1px 1px rgba(255,255,255,.95),inset 0 -1px 1px rgba(255,255,255,.4),inset 0 0 30px rgba(255,255,255,.22)}
+.glass:not(nav){position:relative}
+.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.3px;pointer-events:none;
+ background:linear-gradient(140deg,rgba(255,255,255,.98),rgba(255,255,255,.28) 26%,rgba(255,255,255,.06) 55%,rgba(255,255,255,.5) 82%,rgba(255,255,255,.95));
+ -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+/* liquid controls: thinner tint, lens refraction, bright specular edges */
+nav.glass,.screen.glass,.btn.glassy,.arrows button,.chip.lq{background:rgba(255,255,255,.16);
+ -webkit-backdrop-filter:blur(8px) saturate(210%) brightness(1.08);backdrop-filter:blur(8px) saturate(210%) brightness(1.08);
+ backdrop-filter:url(#lg) blur(5px) saturate(210%) brightness(1.08);
+ box-shadow:inset 0 1px 1.5px rgba(255,255,255,.98),inset 0 -1.5px 2px rgba(255,255,255,.45),inset 0 0 14px rgba(255,255,255,.38),0 8px 24px rgba(40,50,110,.18)}
+.btn.glassy,.arrows button{border:0;position:relative}
+.btn.glassy.replay{position:absolute}
+.btn.glassy:hover,.arrows button:hover{background:rgba(255,255,255,.32)}
+.links a:hover{background:rgba(255,255,255,.35)}
+/* tinted glass buttons */
+.btn.acc{background:rgba(10,132,255,.86);color:#fff;box-shadow:inset 0 1px 1px rgba(255,255,255,.7),inset 0 -1px 2px rgba(0,40,120,.25),0 8px 22px rgba(10,100,255,.32)}
+.btn.acc:hover{background:rgba(10,132,255,.96)}
+.btn.dark{background:rgba(29,29,31,.84);color:#fff;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:inset 0 1px 1px rgba(255,255,255,.35),0 8px 22px rgba(20,20,40,.25)}
+.btn{transition:transform .18s cubic-bezier(.2,.9,.3,1.4),background .2s}
+.btn:hover{transform:translateY(-1px) scale(1.03)}.btn:active{transform:scale(.95)}
+/* accents: iOS blue, gradient words in blue -> violet (no orange) */
+.herotext h1 span,.contact h2 span{background:linear-gradient(90deg,#0a84ff,#5e5ce6 55%,#bf5af2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo span{color:var(--acc)}
+.kicker{color:#5b6170}.lab{color:#6b7180}.case .sub,.parthead p,.specrow p,.toolcol p{color:#4f5563}
+/* media cards: light glass without stacking extra blur */
+.card{background:rgba(255,255,255,.62);border:0;box-shadow:inset 0 1px 1px rgba(255,255,255,.95),0 6px 20px rgba(40,50,110,.12)}
+.card:hover{box-shadow:inset 0 1px 1px rgba(255,255,255,.95),0 14px 34px rgba(40,50,110,.2)}
+.chip{background:rgba(255,255,255,.42);border:0;box-shadow:inset 0 1px 1px rgba(255,255,255,.95),0 1px 4px rgba(40,50,110,.08)}
+.stat{background:rgba(255,255,255,.42);border:0;box-shadow:inset 0 1px 1px rgba(255,255,255,.95)}
+.screen video,.screen img{background:#eef1f8}
+.note{background:rgba(255,255,255,.4);border:0;box-shadow:inset 0 1px 1px rgba(255,255,255,.9)}
+@media (max-width:640px){.btn.glassy.replay{padding:6px 12px;font-size:12px;right:12px;bottom:12px}}
 </style></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <filter id="lg" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency="0.011 0.016" numOctaves="2" seed="4" result="noise"/>
+  <feGaussianBlur in="noise" stdDeviation="2.5" result="soft"/>
+  <feDisplacementMap in="SourceGraphic" in2="soft" scale="42" xChannelSelector="R" yChannelSelector="G"/>
+ </filter></svg>
 <div class="aura" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <nav class="glass"><a class="logo" href="#top">K<span>M</span></a>
   <div class="links"><a href="#humble-house">Humble House</a><a href="#mixxi">Mixxi</a><a href="#channels">Channels</a><a href="#other">Other work</a><a href="#toolkit">Toolkit</a></div>
