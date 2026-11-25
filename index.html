@@ -246,6 +246,22 @@ nav{padding:6px 6px 6px 18px}
 .navpill::after{content:"";position:absolute;left:12%;right:12%;top:2px;height:45%;border-radius:999px;
  background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,0));pointer-events:none}
 @media (max-width:980px){.links{display:flex!important}.links a:not(.navcta){display:none}}
+/* resume + certificates (2026-11-26) */
+.docs{margin:40px auto 0;padding-top:30px;border-top:1px solid var(--line);max-width:900px}
+.docshead{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:18px}
+.docgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;text-align:left}
+.doc{display:flex;flex-direction:column;padding:10px 10px 14px;border-radius:22px;background:rgba(255,255,255,.55);
+ box-shadow:inset 0 1px 1px rgba(255,255,255,.9),0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.05);
+ transition:transform .25s cubic-bezier(.2,.9,.3,1.2),box-shadow .25s}
+.doc:hover{transform:translateY(-4px);box-shadow:inset 0 1px 1px rgba(255,255,255,.9),0 0 0 2px rgba(10,132,255,.55),0 14px 34px rgba(10,110,255,.16)}
+.doc img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top center;border-radius:14px;background:#fff;
+ box-shadow:0 0 0 1px var(--line);margin-bottom:12px}
+.doc div{display:flex;flex-direction:column;gap:2px;padding:0 4px}
+.doc b{font-size:15px;letter-spacing:-.01em;line-height:1.25}
+.doc span{font-size:13px;color:var(--mut)}
+@media (max-width:640px){.docgrid{grid-template-columns:1fr;gap:10px}
+ .doc{flex-direction:row;align-items:center;gap:12px;padding:8px}
+ .doc img{width:88px;flex:none;margin:0;border-radius:10px}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
  <filter id="lg" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
@@ -264,7 +280,7 @@ nav{padding:6px 6px 6px 18px}
    <h1>Kyle Moran<span>Generative AI Editor</span></h1>
    <p class="lead">I turn prompts, plates and briefs into <em>finished, on-brand video</em>: first frames and shots for an animated series pilot, promos for an AI app, ads for real brands, and three YouTube channels I run myself.</p>
    <div class="stats" id="stats"></div>
-   <div class="ctas"><a class="btn acc" href="#humble-house">View the work ↓</a><a class="btn glassy" id="heroMail"></a></div>
+   <div class="ctas"><a class="btn acc" href="#humble-house">View the work ↓</a><a class="btn glassy" href="docs/Kyle-Moran-Resume-2026.pdf" target="_blank" rel="noopener">Resume ↗</a><a class="btn glassy" id="heroMail"></a></div>
    <div class="status">Based in the Philippines · Open to remote roles</div>
   </div>
   <div class="gen glass" id="gen" aria-label="Prompt to result showcase">
@@ -290,7 +306,13 @@ nav{padding:6px 6px 6px 18px}
   <h2>Let's make something<br><span>together.</span></h2>
   <a class="mail" id="bigMail"></a>
   <div class="ctas"><a class="btn dark" id="sendMail">Send an email</a><button class="btn glassy" id="copyMail">Copy address</button><a class="btn glassy" id="li" target="_blank" rel="noopener">LinkedIn ↗</a></div>
-  <div class="status">Based in the Philippines · Open to remote roles</div></div></section>
+  <div class="status">Based in the Philippines · Open to remote roles</div>
+  <div class="docs" id="resume"><div class="docshead">Resume &amp; certificates</div>
+   <div class="docgrid">
+    <a class="doc" href="docs/Kyle-Moran-Resume-2026.pdf" target="_blank" rel="noopener"><img src="docs/resume_t.jpg" alt="Kyle Moran resume, page 1" loading="lazy"><div><b>Resume</b><span>2026 · PDF ↗</span></div></a>
+    <a class="doc" href="docs/Kyle-Moran-BYU-Idaho-Certificate.pdf#page=2" target="_blank" rel="noopener"><img src="docs/byu_t.jpg" alt="BYU-Idaho Web and Computer Programming certificate" loading="lazy"><div><b>Web &amp; Computer Programming</b><span>BYU-Idaho certificate · 2026 ↗</span></div></a>
+    <a class="doc" href="docs/Kyle-Moran-Typing-Certificate.pdf" target="_blank" rel="noopener"><img src="docs/typing_t.jpg" alt="Springboard typing tournament certificate, 3rd place" loading="lazy"><div><b>Typing tournament, 3rd place</b><span>Springboard · 60 WPM · 2026 ↗</span></div></a>
+   </div></div></div></section>
 <footer class="wrap">Spec ads are unofficial concept work, not affiliated with or endorsed by the brands shown. Humble House frames © 10 Ton Productions, shown with permission. Mixxi and IMCH work shown with permission. © 2026 Kyle Moran.</footer>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Viewer">
